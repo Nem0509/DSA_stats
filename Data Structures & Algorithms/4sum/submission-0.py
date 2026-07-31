@@ -1,0 +1,23 @@
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums.sort()
+        r=set()
+        for i in range(0,len(nums)-1):
+            for j in range(i+1,len(nums)-1):
+                s=target-nums[i]-nums[j]
+                a,b=j+1,len(nums)-1
+                while a<b:
+                    if nums[a]+nums[b]==s:
+                        r.add(tuple(sorted([nums[i],nums[j],nums[a],nums[b]])))
+                        b-=1
+                    elif nums[a]+nums[b]>s:
+                        b-=1
+                    elif nums[a]+nums[b]<s:
+                        a+=1
+        return [list(x) for x in r]
+        
+                    
+
+
+
+                        
